@@ -2,11 +2,12 @@ package order;
 
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
+import io.restassured.response.ValidatableResponse;
 
 import static constants.UrlAddresses.ORDER;
 import static io.restassured.RestAssured.given;
 
-public class OrderMethods {
+public class OrderMethods extends User {
     @Step("Создание заказа")
     public static Response createOrder(Order order) {
         return given()
@@ -18,11 +19,12 @@ public class OrderMethods {
     }
 
     @Step("Получение списка заказов")
-    public static Response getOrderList() {
+    public ValidatableResponse getOrderList() {
         return given()
-                .header("Content-Type", "application/json")
+                .spec(getSpec())
                 .when()
-                .get(ORDER);
+                .get(ORDER)
+                .then();
     }
 
     @Step("Отмена заказа")
@@ -30,5 +32,4 @@ public class OrderMethods {
         given()
                 .delete(ORDER + "{orderId}", orderId);
     }
-
 }

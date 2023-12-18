@@ -1,6 +1,13 @@
 package order;
 
 public class Order {
+    private int id;
+    private Integer courierId;
+    private int track;
+    private String createdAt;
+    private String updatedAt;
+    private int status;
+
     private String firstName;
     private String lastName;
     private String address;
@@ -23,6 +30,24 @@ public class Order {
         this.color = color;
     }
 
+    public Order(int id, Integer courierId, int track, String createdAt, String updatedAt, int status, String firstName, String lastName, String address, String metroStation, String phone, int rentTime, String deliveryDate, String comment, String[] color) {
+        this.id = id;
+        this.courierId = courierId;
+        this.track = track;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.status = status;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.metroStation = metroStation;
+        this.phone = phone;
+        this.rentTime = rentTime;
+        this.deliveryDate = deliveryDate;
+        this.comment = comment;
+        this.color = color;
+    }
+
     public Order(String firstName, String lastName, String address, String metroStation, String phone, int rentTime, String deliveryDate, String comment) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -34,6 +59,13 @@ public class Order {
         this.comment = comment;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getFirstName() {
         return firstName;
